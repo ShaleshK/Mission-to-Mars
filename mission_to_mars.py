@@ -1,10 +1,11 @@
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from splinter import Browser
+import requests
 
 def scrape_all():
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     news_title, news_p = mars_news(browser)
     data = {
         "news_title": news_title, 
@@ -88,9 +89,9 @@ def hemispheres(browser):
         html = browser.html
         soup = bs(html, 'html.parser')
         img = soup.find('img',class_='wide-image').get('src')
-        img_url = f'https://astrogeology.usgs.gov/search/map/Mars/Viking/{i}{img}'
+        # img_url = f'https://astrogeology.usgs.gov/search/map/Mars/Viking/{i}{img}'
         title = soup.find("h2",class_="title").get_text()
-        hemisphere_image_urls.append( {"title":title, "img_url": img_url})
+        hemisphere_image_urls.append( {"title":title, "img_url": img})
     return hemisphere_image_urls
 
 
