@@ -41,9 +41,9 @@ def mars_news(browser):
     html = browser.html
     soup = bs(html, 'html.parser')
     try: 
-        slide = soup.select_one('ul.item_list li.slide')
+        slide = soup.select_one('ul.item_list')
         news_title = slide.find('div', class_="content_title").get_text()
-        news_p = slide.find('div', class_="article_teaser_body").text
+        news_p = slide.find('div', class_="article_teaser_body").get_text()
     except AttributeError:
         return None, None
 
@@ -75,7 +75,7 @@ def mars_facts(browser):
     table_df = pd.DataFrame(l, columns=["description", "value"])
     table_df.set_index("description",inplace=True)
     table_df
-    return table_df.to_html(classes="table table-striped")
+    return table_df.to_html(header=False, classes="table table-striped")
 
 def hemispheres(browser):
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars' 
@@ -89,9 +89,9 @@ def hemispheres(browser):
         html = browser.html
         soup = bs(html, 'html.parser')
         img = soup.find('img',class_='wide-image').get('src')
-        # img_url = f'https://astrogeology.usgs.gov/search/map/Mars/Viking/{i}{img}'
+        img_url = f'https://astrogeology.usgs.gov{img}'
         title = soup.find("h2",class_="title").get_text()
-        hemisphere_image_urls.append( {"title":title, "img_url": img})
+        hemisphere_image_urls.append( {"title":title, "img_url": img_url})
     return hemisphere_image_urls
 
 
