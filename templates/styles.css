@@ -1,0 +1,17 @@
+.img-thumbnail {
+    max-width: 200px;
+    margin: 6px;
+    height: 100px;
+}
+
+.img-main {
+    max-width: 330px;
+    margin: 6px;
+   
+}
+
+.img-comp {
+    max-width: 280px;
+    margin: 6px;
+   
+}
