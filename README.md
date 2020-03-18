@@ -5,9 +5,9 @@
 #### (or double-clicking on the mongod icon)   
 `python app.py` in Anaconda Prompt
 
-![MarsNews]("URL.JPG")
-![MarsFacts]("MarsFacts.JPG")
-![Hemispheres]("Hemispheres.JPG")
+![MarsNews](URL.JPG)
+![MarsFacts](MarsFacts.JPG)
+![Hemispheres](Hemispheres.JPG)
 
 #### Scrape All function
 ```python
